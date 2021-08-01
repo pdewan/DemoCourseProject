@@ -1,7 +1,7 @@
 package counterIncrementer;
 
 
-import counterIncrementer.barrier.CoordinatedCounterIncrementer;
+import counterIncrementer.coordinated.CoordinatedCounterIncrementer;
 import counterIncrementer.synchronize.SynchronizedCounterIncrementer;
 import stringCounter.StringCounter;
 
@@ -23,8 +23,9 @@ public class CounterIncrementerFactory {
 	public static CounterIncrementer createCounterIncrementer(
 			StringCounter aCounter, 
 			int aNumIncrements,
-			int aNumRequests) {
-		return new CoordinatedCounterIncrementer(aCounter, aNumIncrements, aNumRequests);
+			long aPauseTime
+			) {
+		return new CoordinatedCounterIncrementer(aCounter, aNumIncrements, aPauseTime);
 
 	}
 //	public static CounterIncrementer createCounterIncrementer(

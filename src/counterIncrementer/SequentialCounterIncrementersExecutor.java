@@ -11,7 +11,7 @@ public class SequentialCounterIncrementersExecutor implements CounterIncrementer
 //	}
 
 	@Override
-	public void execute(CounterIncrementer[] aCounterIncrementers) {
+	public void execute(CounterIncrementer[] aCounterIncrementers, long aPauseTime) {
 		for (CounterIncrementer aCounterIncrementer:aCounterIncrementers) {
 			aCounterIncrementer.countUp();
 		}

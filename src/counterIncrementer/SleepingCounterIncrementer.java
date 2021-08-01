@@ -8,23 +8,24 @@ public class SleepingCounterIncrementer extends AbstractCounterIncrementer imple
 //	int numIncrements; 
 //	public static long SLEEP_TIME = 200;
 ////	long sleepTime;
-	public SleepingCounterIncrementer(StringCounter aCounter, 
-			int aNumIncrements 
-//			long aSleepTime
-			) {
+	long pauseTime;
+
+	public SleepingCounterIncrementer(StringCounter aCounter, int aNumIncrements, long aPauseTime) {
 		super(aCounter, aNumIncrements);
+		pauseTime = aPauseTime;
 //		sleepTime = aSleepTime;
 	}
+
 	@Override
 	protected void preIncrementStep() {
-		
+
 	}
+
 	@Override
 	protected void postIncrementStep() {
 		try {
-			long aPauseTime = StringCounterMain.getPauseTime();
-			if (aPauseTime > 0) {
-			Thread.sleep(StringCounterMain.getPauseTime());
+			if (pauseTime > 0) {
+				Thread.sleep(pauseTime);
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -39,6 +40,5 @@ public class SleepingCounterIncrementer extends AbstractCounterIncrementer imple
 //			
 //		}
 //	}
-
 
 }

@@ -1,21 +1,28 @@
 package counterIncrementer.coordinated;
 
+import coordination.barrier.BarrierFactory;
+import coordination.joiner.JoinerFactory;
 import counterIncrementer.AbstractCounterIncrementer;
+import counterIncrementer.SleepingCounterIncrementer;
 import stringCounter.StringCounter;
 import stringCounter.main.StringCounterMain;
 
-public class CoordinatedCounterIncrementer extends AbstractCounterIncrementer {
+public class CoordinatedCounterIncrementer extends SleepingCounterIncrementer {
+//	int numThreads;
 
-	public CoordinatedCounterIncrementer(StringCounter aCounter, int aNumIncrements) {
-		super(aCounter, aNumIncrements);
+	public CoordinatedCounterIncrementer(StringCounter aCounter, int aNumIncrements, long aPauseTime) {
+		super(aCounter, aNumIncrements, aPauseTime);
+//		numThreads = aNumThreads;
 	}
 	@Override
 	protected void preIncrementStep() {		
-		CoordinatorFactory.getSingleton().synchronizedWait();
+		BarrierFactory.getSingleton().barrier();
 
 	}
 	@Override
-	protected void postIncrementStep() {
-		
+	public void countUp() {
+		super.countUp();
+		JoinerFactory.getSingleton().threadFinished();
 	}
+	
 }

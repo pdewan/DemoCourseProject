@@ -10,10 +10,10 @@ public class SynchronizedCounterIncrementer extends SleepingCounterIncrementer i
 //	public static long SLEEP_TIME = 200;
 ////	long sleepTime;
 	public SynchronizedCounterIncrementer(StringCounter aCounter, 
-			int aNumIncrements 
-//			long aSleepTime
+			int aNumIncrements,
+			long aPauseTime
 			) {
-		super(aCounter, aNumIncrements);
+		super(aCounter, aNumIncrements, aPauseTime);
 //		sleepTime = aSleepTime;
 	}
 	
