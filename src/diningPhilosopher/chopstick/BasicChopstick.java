@@ -4,7 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class BasicChopstick implements SmartChopstick{
+public class BasicChopstick implements Chopstick{
 	boolean used = false;
 	int id = -1;
 	PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);

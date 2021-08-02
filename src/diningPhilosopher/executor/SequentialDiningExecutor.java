@@ -9,9 +9,10 @@ public class SequentialDiningExecutor implements DiningExecutor {
 	@Override
 	public void dineCourse(Philosopher[] aPhilosophers, long aTimeToEat) {
 		for (Philosopher aPhilosopher:aPhilosophers) {
-			aPhilosopher.dineCourse(aTimeToEat);
+			dineCourse(aPhilosopher, aTimeToEat);
 		}
+	}	
+	protected void dineCourse(Philosopher aPhilosopher, long aTimeToEat) {
+		aPhilosopher.dineCourse(aTimeToEat);
 	}
-
-
 }

@@ -1,14 +1,20 @@
 package diningPhilosopher.chopstick;
 
-public class ChopstickFactory {
-	static SmartChopstick[] chopsticks;
+import diningPhilosopher.atomic.SynchronizedChopstick;
+import diningPhilosopher.coordinated.CoordinatedChopstick;
 
-    static SmartChopstick createChopstick(int anId) {
-		return new BasicChopstick(anId);
+public class ChopstickFactory {
+	static Chopstick[] chopsticks;
+
+    static Chopstick createChopstick(int anId) {
+		return new 
+//				BasicChopstick(anId);
+//				SynchronizedChopstick(anId);
+				CoordinatedChopstick(anId);
 	}
 
-	public static SmartChopstick[]  createChopsticks(int aNumChopsticks) {
-		chopsticks = new SmartChopstick[aNumChopsticks];
+	public static Chopstick[]  createChopsticks(int aNumChopsticks) {
+		chopsticks = new Chopstick[aNumChopsticks];
 		for (int anId = 0; anId < chopsticks.length; anId++) {
 			chopsticks[anId] = createChopstick(anId);
 		}
@@ -23,7 +29,7 @@ public class ChopstickFactory {
 //		return chopsticks[anId];
 //	}
 //	
-	public static SmartChopstick[] getChopsticks() {
+	public static Chopstick[] getChopsticks() {
 		return chopsticks;
 	}
 

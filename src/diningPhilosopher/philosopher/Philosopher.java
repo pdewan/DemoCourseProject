@@ -11,5 +11,6 @@ public interface Philosopher {
 	boolean isWithLeftChopstick();
 	boolean isWithRightChopstick();
 	void addPropertyChangeListener(PropertyChangeListener aListener);
+	boolean isFed();
 
 }
