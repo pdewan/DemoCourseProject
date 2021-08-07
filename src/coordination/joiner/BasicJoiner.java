@@ -1,10 +1,17 @@
 package coordination.joiner;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+import gradingTools.comp999.assignment2.DiningTestUtil;
+import util.models.BasicPropertyNotificationSupport;
+import util.models.PropertyNotificationSupport;
+
 public class BasicJoiner implements Joiner{
-	PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+	PropertyNotificationSupport propertyNotificationSupport = new BasicPropertyNotificationSupport();
+
+//	PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 	int numThreads;
 	int numThreadsFinished=0;
 	
@@ -16,7 +23,11 @@ public class BasicJoiner implements Joiner{
 		numThreadsFinished++;
 		if(isAllThreadsFinished()) {
 			notify();
-			propertyChangeSupport.firePropertyChange("AllThreadsFinished", false, true);
+			propertyNotificationSupport.firePropertyChange(
+					new PropertyChangeEvent(this, 
+							DiningTestUtil.ALL_THREADS_FINISHED, 
+							false, 
+							true));
 		}
 	}
 	@Override
@@ -36,7 +47,7 @@ public class BasicJoiner implements Joiner{
 	}
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener aListener) {
-		propertyChangeSupport.addPropertyChangeListener(aListener);
+		propertyNotificationSupport.addPropertyChangeListener(aListener);
 	}
 	@Override
 	public void reset(int aNumThreads) {
@@ -44,4 +55,7 @@ public class BasicJoiner implements Joiner{
 		numThreadsFinished = 0;
 	}	
 
+	public String toString() {
+		return "Joiner";
+	}
 }

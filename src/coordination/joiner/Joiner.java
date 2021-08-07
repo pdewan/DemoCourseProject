@@ -2,12 +2,14 @@ package coordination.joiner;
 
 import java.beans.PropertyChangeListener;
 
-public interface Joiner {
+import util.models.PropertyListenerRegisterer;
+
+public interface Joiner extends PropertyListenerRegisterer{
 	 void threadFinished(); 
 	 void join();
 	 void reset(int aNumThreads);
 	 boolean isAllThreadsFinished();
-	 void addPropertyChangeListener(PropertyChangeListener aListener);
+//	 void addPropertyChangeListener(PropertyChangeListener aListener);
 
 
 }

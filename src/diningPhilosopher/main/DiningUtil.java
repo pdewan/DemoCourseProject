@@ -2,27 +2,36 @@ package diningPhilosopher.main;
 
 import java.beans.PropertyChangeListener;
 
+import coordination.joiner.JoinerFactory;
 import diningPhilosopher.chopstick.ChopstickFactory;
 import diningPhilosopher.chopstick.Chopstick;
 import diningPhilosopher.executor.DiningExecutor;
 import diningPhilosopher.executor.DiningExecutorFactory;
 import diningPhilosopher.philosopher.Philosopher;
 import diningPhilosopher.philosopher.PhilospherFactory;
-import diningPhilosopher.view.DiningPhilosopherViewFactory;
+import diningPhilosopher.view.DiningViewFactory;
+import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
 
-public class DiningPhilosopherUtil {
-   public static void setNumberOfPhilosphers(int aNumberOfPhilosophers) {
+public class DiningUtil {
+   public static void setNumberOfPhilosophers(int aNumberOfPhilosophers) {
 	   Chopstick[] aChopsticks = ChopstickFactory.createChopsticks(aNumberOfPhilosophers);
 	   Philosopher[] aPhilosophers = PhilospherFactory.createPhilosophers(aChopsticks);
-	   PropertyChangeListener aView = DiningPhilosopherViewFactory.getSingleton();
+	   PropertyChangeListener aView = DiningViewFactory.getSingleton();
 	   registerObserverWithObservables(aView);
+//	   registerObserverWithJoiner(aView);
 	  
 	   
    }
    
-   static void registerObserverWithObservables (PropertyChangeListener aListener) {
+   public static void waitForPhilosophersToFinish() {
+	   JoinerFactory.getSingleton().join();
+   }
+   
+   public static void registerObserverWithObservables (PropertyChangeListener aListener) {
 	   registerObserverWithChopsticks(aListener);
 	   registerObserverWithPhilosophers(aListener);
+	   registerObserverWithJoiner(aListener);
+
    }
 
    
@@ -37,6 +46,9 @@ public class DiningPhilosopherUtil {
 	   for (Chopstick aChopstick:aChopsticks) {
 		   aChopstick.addPropertyChangeListener(aListener);
 	   }	   
+   }
+   static void registerObserverWithJoiner (PropertyChangeListener aListener) {
+	  JoinerFactory.getSingleton().addPropertyChangeListener(aListener); 
    }
    
    public static void setNewCourseTime(long aTimeToEat) {

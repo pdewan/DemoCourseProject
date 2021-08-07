@@ -5,6 +5,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import diningPhilosopher.chopstick.Chopstick;
+import util.models.BasicPropertyNotificationSupport;
+import util.models.PropertyNotificationSupport;
 
 public class BasicPhilosopher implements Philosopher{
 	protected int id;
@@ -13,14 +15,14 @@ public class BasicPhilosopher implements Philosopher{
 	boolean withRightChopstick;
 	boolean fed = false;
 	
-	PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+	PropertyNotificationSupport propertyNotificationSupport = new BasicPropertyNotificationSupport();
 	public BasicPhilosopher(int anId, Chopstick aLeftChopstick, Chopstick aRightChopstick) {
 		id = anId;
 		leftChopstick = aLeftChopstick;
 		rightChopstick = aRightChopstick;		
 	}
 	protected void propertyChanged (String aPropertyName, Object anOldValue, Object aNewValue) {
-		propertyChangeSupport.firePropertyChange(
+		propertyNotificationSupport.firePropertyChange(
 				new PropertyChangeEvent(this, aPropertyName, anOldValue, aNewValue));
 	}
 //	protected void withLeftChopstickPropertyChanged (Object anOldValue) {
@@ -131,7 +133,8 @@ public class BasicPhilosopher implements Philosopher{
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener aListener) {
-		propertyChangeSupport.addPropertyChangeListener(aListener);
+//		System.out.println("Listener added:" + aListener);
+		propertyNotificationSupport.addPropertyChangeListener(aListener);
 	}
 	public String toString() {
 		return "Philosopher " + id;

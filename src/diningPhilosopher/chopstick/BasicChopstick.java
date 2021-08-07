@@ -4,10 +4,13 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+import util.models.BasicPropertyNotificationSupport;
+import util.models.PropertyNotificationSupport;
+
 public class BasicChopstick implements Chopstick{
 	boolean used = false;
 	int id = -1;
-	PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+	PropertyNotificationSupport propertyChangeSupport = new BasicPropertyNotificationSupport();
 
 	public BasicChopstick(int anId) {
 		id = anId;

@@ -3,15 +3,15 @@ package diningPhilosopher.controller;
 import java.beans.PropertyChangeListener;
 
 import counterIncrementer.coordinated.CoordinatedStringCounterController;
-import diningPhilosopher.coordinated.CoordinatedDiningPhilosopherController;
+import diningPhilosopher.coordinated.ButlerCoordinatedDiningController;
 
-public class DiningPhilosopherControllerFactory {
+public class DiningControllerFactory {
 	static ConsoleController singleton;
 	public static ConsoleController  getSingleton() {
 		if (singleton == null) {
 			singleton = 
-//				new BasicDiningPhilosopherController();
-				new CoordinatedDiningPhilosopherController();
+				new BasicDiningController();
+//				new ButlerCoordinatedDiningController();
 
 //			singleton = new BasicStringCounterController();
 //			singleton = new CoordinatedStringCounterController();

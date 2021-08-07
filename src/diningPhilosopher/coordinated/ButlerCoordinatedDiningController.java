@@ -9,12 +9,12 @@ import coordination.joiner.JoinerFactory;
 import counterIncrementer.CounterIncrementer;
 import counterIncrementer.CounterIncrementersExecutor;
 import counterIncrementer.CounterIncrementersExecutorFactory;
-import diningPhilosopher.controller.BasicDiningPhilosopherController;
-import diningPhilosopher.main.DiningPhilosopherUtil;
+import diningPhilosopher.controller.BasicDiningController;
+import diningPhilosopher.main.DiningUtil;
 import stringCounter.main.StringCounterMain;
 import stringCounter.main.CounterIncrementerUtil;
 
-public class CoordinatedDiningPhilosopherController extends BasicDiningPhilosopherController {
+public class ButlerCoordinatedDiningController extends BasicDiningController {
     protected Long readTimeToEatNextCourse() {
 		JoinerFactory.getSingleton().join();
 		return super.readTimeToEatNextCourse();

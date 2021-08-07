@@ -1,6 +1,7 @@
 package diningPhilosopher.philosopher;
 
 import diningPhilosopher.chopstick.ChopstickFactory;
+import diningPhilosopher.coordinated.ButlerCoordinatedPhilosopher;
 import diningPhilosopher.coordinated.CoordinatedPhilosopher;
 import diningPhilosopher.chopstick.Chopstick;
 
@@ -11,6 +12,8 @@ public class PhilospherFactory {
 		return new 
 //				BasicPhilosopher(anId, aLeftChopstick, aRightChopstick);
 				CoordinatedPhilosopher(anId, aLeftChopstick, aRightChopstick);
+
+//				ButlerCoordinatedPhilosopher(anId, aLeftChopstick, aRightChopstick);
 	}
 
 	public static Philosopher[] createPhilosophers(Chopstick[] aChopsticks) {

@@ -3,7 +3,7 @@ package diningPhilosopher.executor;
 import counterIncrementer.coordinated.CoordinatedCounterIncrementorsExecutor;
 import counterIncrementer.threads.ConcurrentCounterIncrementersExecutor;
 import diningPhilosopher.concurrent.ConcurrentDiningExecutor;
-import diningPhilosopher.coordinated.CoordinatedDiningExecutor;
+import diningPhilosopher.coordinated.ButlerCoordinatedDiningExecutor;
 
 public class DiningExecutorFactory {
 	static DiningExecutor singleton;
@@ -12,7 +12,7 @@ public class DiningExecutorFactory {
 			singleton = 
 //					new SequentialDiningExecutor();
 //			        new ConcurrentDiningExecutor();
-					new CoordinatedDiningExecutor();
+					new ButlerCoordinatedDiningExecutor();
 
 		}
 		return singleton;

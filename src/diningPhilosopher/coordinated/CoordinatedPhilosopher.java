@@ -21,10 +21,10 @@ public class CoordinatedPhilosopher extends BasicPhilosopher {
 		
 	}
 	
-	public void dineCourse(long aTimeToEat) {
-		super.dineCourse(aTimeToEat);
-		JoinerFactory.getSingleton().threadFinished();
-		
-	}
+//	public void dineCourse(long aTimeToEat) {
+//		super.dineCourse(aTimeToEat);
+//		JoinerFactory.getSingleton().threadFinished();
+//		
+//	}
 
 }

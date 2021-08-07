@@ -2,15 +2,17 @@ package diningPhilosopher.philosopher;
 
 import java.beans.PropertyChangeListener;
 
+import util.models.PropertyListenerRegisterer;
+
 /**
  * Smart Chopstick, knows it is being used
  *
  */
-public interface Philosopher {
+public interface Philosopher extends PropertyListenerRegisterer{
 	void dineCourse(long aTimeToEat);
 	boolean isWithLeftChopstick();
 	boolean isWithRightChopstick();
-	void addPropertyChangeListener(PropertyChangeListener aListener);
+//	void addPropertyChangeListener(PropertyChangeListener aListener);
 	boolean isFed();
 
 }

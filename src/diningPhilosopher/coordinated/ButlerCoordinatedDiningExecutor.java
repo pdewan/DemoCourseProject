@@ -8,7 +8,7 @@ import diningPhilosopher.executor.DiningExecutor;
 import diningPhilosopher.executor.SequentialDiningExecutor;
 import diningPhilosopher.philosopher.Philosopher;
 
-public class CoordinatedDiningExecutor extends ConcurrentDiningExecutor {
+public class ButlerCoordinatedDiningExecutor extends ConcurrentDiningExecutor {
 	
 	public void dineCourse(Philosopher[] aPhilosophers, long aTimeToEat) {
 		JoinerFactory.getSingleton().reset(aPhilosophers.length);
