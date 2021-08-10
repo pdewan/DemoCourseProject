@@ -9,7 +9,7 @@ import util.models.PropertyListenerRegisterer;
  *
  */
 public interface Philosopher extends PropertyListenerRegisterer{
-	void dineCourse(long aTimeToEat);
+	boolean dineCourse(long aTimeToEat);
 	boolean isWithLeftChopstick();
 	boolean isWithRightChopstick();
 //	void addPropertyChangeListener(PropertyChangeListener aListener);

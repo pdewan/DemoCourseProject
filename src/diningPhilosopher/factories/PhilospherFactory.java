@@ -1,8 +1,10 @@
-package diningPhilosopher.philosopher;
+package diningPhilosopher.factories;
 
-import diningPhilosopher.chopstick.ChopstickFactory;
+import diningPhilosopher.coordinated.PollingPhilosopher;
 import diningPhilosopher.coordinated.ButlerCoordinatedPhilosopher;
-import diningPhilosopher.coordinated.CoordinatedPhilosopher;
+import diningPhilosopher.coordinated.NoDeadlockCoordinatedPhilosopher;
+import diningPhilosopher.philosopher.BasicPhilosopher;
+import diningPhilosopher.philosopher.Philosopher;
 import diningPhilosopher.chopstick.Chopstick;
 
 public class PhilospherFactory {
@@ -11,7 +13,8 @@ public class PhilospherFactory {
 	static Philosopher createPhilosopher(int anId, Chopstick aLeftChopstick, Chopstick aRightChopstick) {
 		return new 
 //				BasicPhilosopher(anId, aLeftChopstick, aRightChopstick);
-				CoordinatedPhilosopher(anId, aLeftChopstick, aRightChopstick);
+//				PollingPhilosopher(anId,aLeftChopstick, aRightChopstick);
+				NoDeadlockCoordinatedPhilosopher(anId, aLeftChopstick, aRightChopstick);
 
 //				ButlerCoordinatedPhilosopher(anId, aLeftChopstick, aRightChopstick);
 	}

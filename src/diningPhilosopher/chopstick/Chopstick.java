@@ -11,7 +11,7 @@ import util.models.PropertyListenerRegisterer;
 public interface Chopstick extends PropertyListenerRegisterer{
 //	int getId();
 	boolean isUsed();
-	void take();
+	boolean take();
 	void put();
 //	void addPropertyChangeListener(PropertyChangeListener aListener);
 }

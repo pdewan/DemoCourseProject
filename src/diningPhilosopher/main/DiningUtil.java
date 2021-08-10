@@ -3,13 +3,13 @@ package diningPhilosopher.main;
 import java.beans.PropertyChangeListener;
 
 import coordination.joiner.JoinerFactory;
-import diningPhilosopher.chopstick.ChopstickFactory;
 import diningPhilosopher.chopstick.Chopstick;
 import diningPhilosopher.executor.DiningExecutor;
-import diningPhilosopher.executor.DiningExecutorFactory;
+import diningPhilosopher.factories.ChopstickFactory;
+import diningPhilosopher.factories.DiningExecutorFactory;
+import diningPhilosopher.factories.DiningViewFactory;
+import diningPhilosopher.factories.PhilospherFactory;
 import diningPhilosopher.philosopher.Philosopher;
-import diningPhilosopher.philosopher.PhilospherFactory;
-import diningPhilosopher.view.DiningViewFactory;
 import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
 
 public class DiningUtil {

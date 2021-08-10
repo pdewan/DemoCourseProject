@@ -1,19 +1,22 @@
 package diningPhilosopher.atomic;
 
-import diningPhilosopher.chopstick.BasicChopstick;
+import diningPhilosopher.concurrent.ExclusiveChopstick;
 
-public class SynchronizedChopstick extends BasicChopstick{
+public class SynchronizedChopstick extends ExclusiveChopstick{
 
 	public SynchronizedChopstick(int anId) {
 		super(anId);
 	}
-	public synchronized void take() {
-		super.take();		
+//	protected boolean preconditionTake() {
+//		return true;
+//	}
+	public synchronized boolean take() {
+		return super.take();		
 	}
 
 	@Override
 	public synchronized void put() {
-		super.put();
+		 super.put();
 	}
 
 }

@@ -4,19 +4,22 @@ import coordination.joiner.JoinerFactory;
 import diningPhilosopher.chopstick.Chopstick;
 import diningPhilosopher.philosopher.BasicPhilosopher;
 
-public class CoordinatedPhilosopher extends BasicPhilosopher {
+public class NoDeadlockCoordinatedPhilosopher extends BasicPhilosopher {
 
-	public CoordinatedPhilosopher(int anId, Chopstick aLeftChopstick, Chopstick aRightChopstick) {
+	public NoDeadlockCoordinatedPhilosopher(int anId, Chopstick aLeftChopstick, Chopstick aRightChopstick) {
 		super(anId, aLeftChopstick, aRightChopstick);
 	}
 	@Override
-	protected void takeChopsticks () {
+	protected boolean takeChopsticks () {
 		if (id != 0) {
-			super.takeChopsticks();
+			return super.takeChopsticks();
 			
 		} else {
-			takeRightChopstick();
-			takeLeftChopstick();
+			if (takeRightChopstick() ) {
+				return takeLeftChopstick();
+			} else {
+				return true;
+			}
 		}
 		
 	}

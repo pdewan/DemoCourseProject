@@ -4,7 +4,7 @@ import coordination.joiner.JoinerFactory;
 import diningPhilosopher.chopstick.Chopstick;
 import diningPhilosopher.philosopher.BasicPhilosopher;
 
-public class ButlerCoordinatedPhilosopher extends CoordinatedPhilosopher {
+public class ButlerCoordinatedPhilosopher extends NoDeadlockCoordinatedPhilosopher {
 
 	public ButlerCoordinatedPhilosopher(int anId, Chopstick aLeftChopstick, Chopstick aRightChopstick) {
 		super(anId, aLeftChopstick, aRightChopstick);
@@ -21,9 +21,10 @@ public class ButlerCoordinatedPhilosopher extends CoordinatedPhilosopher {
 //		
 //	}
 	
-	public void dineCourse(long aTimeToEat) {
-		super.dineCourse(aTimeToEat);
+	public boolean dineCourse(long aTimeToEat) {
+		boolean retVal = super.dineCourse(aTimeToEat);
 		JoinerFactory.getSingleton().threadFinished();
+		return retVal;
 		
 	}
 

@@ -1,6 +1,8 @@
-package diningPhilosopher.view;
+package diningPhilosopher.factories;
 
 import java.beans.PropertyChangeListener;
+
+import diningPhilosopher.view.BasicDiningView;
 
 public class DiningViewFactory {
 	static PropertyChangeListener singleton;

@@ -1,13 +1,13 @@
 package diningPhilosopher.coordinated;
 
-import diningPhilosopher.chopstick.BasicChopstick;
+import diningPhilosopher.concurrent.ExclusiveChopstick;
 
-public class CoordinatedChopstick extends BasicChopstick{
+public class LockedChopstick extends ExclusiveChopstick{
 
-	public CoordinatedChopstick(int anId) {
+	public LockedChopstick(int anId) {
 		super(anId);
 	}
-	public synchronized void take() {
+	public synchronized boolean take() {
 		while (isUsed()) {
 			try {
 				wait();
@@ -15,7 +15,7 @@ public class CoordinatedChopstick extends BasicChopstick{
 				e.printStackTrace();
 			}
 		}
-		super.take();		
+		return super.take();		
 	}
 
 	@Override

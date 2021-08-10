@@ -1,8 +1,10 @@
-package diningPhilosopher.controller;
+package diningPhilosopher.factories;
 
 import java.beans.PropertyChangeListener;
 
 import counterIncrementer.coordinated.CoordinatedStringCounterController;
+import diningPhilosopher.controller.BasicDiningController;
+import diningPhilosopher.controller.ConsoleController;
 import diningPhilosopher.coordinated.ButlerCoordinatedDiningController;
 
 public class DiningControllerFactory {

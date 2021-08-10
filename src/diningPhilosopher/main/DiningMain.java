@@ -1,6 +1,6 @@
 package diningPhilosopher.main;
 
-import diningPhilosopher.controller.DiningControllerFactory;
+import diningPhilosopher.factories.DiningControllerFactory;
 import stringCounter.StringCounterControllerFactory;
 
 public class DiningMain {

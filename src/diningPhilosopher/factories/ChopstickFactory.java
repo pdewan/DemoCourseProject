@@ -1,16 +1,20 @@
-package diningPhilosopher.chopstick;
+package diningPhilosopher.factories;
 
 import diningPhilosopher.atomic.SynchronizedChopstick;
-import diningPhilosopher.coordinated.CoordinatedChopstick;
+import diningPhilosopher.chopstick.Chopstick;
+import diningPhilosopher.chopstick.SharedChopstick;
+import diningPhilosopher.concurrent.ExclusiveChopstick;
+import diningPhilosopher.coordinated.LockedChopstick;
 
 public class ChopstickFactory {
 	static Chopstick[] chopsticks;
 
     static Chopstick createChopstick(int anId) {
 		return new 
-//				BasicChopstick(anId);
+//				SharedChopstick(anId);
+//				ExclusiveChopstick(anId);
 //				SynchronizedChopstick(anId);
-				CoordinatedChopstick(anId);
+				LockedChopstick(anId);
 	}
 
 	public static Chopstick[]  createChopsticks(int aNumChopsticks) {
