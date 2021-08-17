@@ -13,8 +13,8 @@ public class ChopstickFactory {
 		return new 
 //				SharedChopstick(anId);
 //				ExclusiveChopstick(anId);
-//				SynchronizedChopstick(anId);
-				LockedChopstick(anId);
+				SynchronizedChopstick(anId);
+//				LockedChopstick(anId);
 	}
 
 	public static Chopstick[]  createChopsticks(int aNumChopsticks) {
