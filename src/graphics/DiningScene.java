@@ -128,17 +128,19 @@ public class DiningScene implements DiningSceneInterface {
 	}
 
 	@Override
-	public boolean getWaiting(PhilosopherAvatarInterface philosopher) {
-		return philosopher.getWaiting();
+	public void initNumberOfPhilosophers(int aNumberOfPhilosophers) {
+		DiningUtil.setNumberOfPhilosophers(aNumberOfPhilosophers);
+		numberOfPhilosophers = aNumberOfPhilosophers;
 	}
 
 	@Override
-	public boolean getRaisedHand(PhilosopherAvatarInterface philosopher) {
-		return philosopher.getRaisedHand();
+	public void nextCourseTime(long newVal) {
+		DiningUtil.setNewCourseTime(newVal);
 	}
 
-	public void initNumberOfPhilosophers(int aNumberOfPhilosophers) {
-		DiningUtil.setNumberOfPhilosophers(aNumberOfPhilosophers);
+	@Override
+	public boolean preNextCourseTime() {
+		return numberOfPhilosophers != -1;
 	}
 
 	@Override
@@ -149,15 +151,27 @@ public class DiningScene implements DiningSceneInterface {
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		// doesn't work!
-		if (evt.getSource().toString().equals("Philosopher 1") & evt.getPropertyName().toString().equals("Fed")
+		if (evt.getSource().toString().equals("Philosopher 0") & evt.getPropertyName().toString().equals("Fed")
 				& evt.getNewValue().toString().equals("true")) {
 			// make philo 1 the observer of the og philosopher 1 object
 			philosopher1.getArms().lowerArm();
 			philosopher1.setRaisedHand(false);
-		} else if (evt.getSource().toString().equals("Philosopher 2")
+		} else if (evt.getSource().toString().equals("Philosopher 1")
 				& evt.getPropertyName().toString().equals("Fed")) {
 			philosopher2.getArms().lowerArm();
 			philosopher2.setRaisedHand(false);
+		} else if (evt.getSource().toString().equals("Philosopher 2")
+				& evt.getPropertyName().toString().equals("Fed")) {
+			philosopher3.getArms().lowerArm();
+			philosopher3.setRaisedHand(false);
+		}
+		else if (evt.getSource().toString().equals("Philosopher 3") & evt.getPropertyName().toString().equals("Fed")) {
+			philosopher4.getArms().lowerArm();
+			philosopher4.setRaisedHand(false);
+		} else if (evt.getSource().toString().equals("Philosopher 4")
+				& evt.getPropertyName().toString().equals("Fed")) {
+			philosopher5.getArms().lowerArm();
+			philosopher5.setRaisedHand(false);
 		}
 	}
 }

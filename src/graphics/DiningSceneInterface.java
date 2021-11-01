@@ -28,9 +28,11 @@ public interface DiningSceneInterface extends PropertyChangeListener {
 
 	public PhilosopherAvatarInterface getPhilosopher5();
 
-	public boolean getWaiting(PhilosopherAvatarInterface philosopher);
-
-	public boolean getRaisedHand(PhilosopherAvatarInterface philosopher);
-
 	boolean preInitNumberOfPhilosophers();
+
+	void initNumberOfPhilosophers(int aNumberOfPhilosophers);
+
+	void nextCourseTime(long newVal);
+
+	boolean preNextCourseTime();
 }
