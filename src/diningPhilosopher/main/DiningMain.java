@@ -7,6 +7,7 @@ public class DiningMain {
 
 
 	public static void main(String[] args) {
+		// ShapeObjectAdapter.setUseTreeIndexForZIndex(false);
 		SceneFactory.getSingleton();
 		DiningControllerFactory.getSingleton().processInput();
 	}

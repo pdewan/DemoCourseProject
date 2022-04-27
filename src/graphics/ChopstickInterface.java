@@ -1,21 +1,18 @@
 package graphics;
 
 import java.beans.PropertyChangeListener;
-import java.util.List;
 
 import util.annotations.StructurePattern;
 import util.annotations.StructurePatternNames;
 
-@StructurePattern(StructurePatternNames.IMAGE_PATTERN)
+@StructurePattern(StructurePatternNames.BEAN_PATTERN)
 
 public interface ChopstickInterface extends PropertyChangeListener {
 
-	String getImageFileName();
+	StringShapeInterface getStringShape();
 
-	void setImageFileName(String newVal);
+	ChopstickImageInterface getChopstick();
 
-	public void addPropertyChangeListener(PropertyChangeListener newListen);
-
-	public List<PropertyChangeListener> getPropertyChangeListeners();
+	void moveTo(int x, int y);
 
 }

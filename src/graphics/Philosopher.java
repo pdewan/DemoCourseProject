@@ -18,7 +18,6 @@ public class Philosopher extends Locatable implements PhilosopherInterface {
 	int width;
 	int height;
 	boolean waiting;
-
 	// create philo avatar, also create vars for raised hand and the motion! then
 	// bind to property change listeners //
 	public Philosopher(int initX, int initY, int initWidth, int initHeight) {
@@ -74,7 +73,7 @@ public class Philosopher extends Locatable implements PhilosopherInterface {
 	public boolean getWaiting() {
 		return waiting;
 	}
-	
+
 	@Override
 	public void setWaiting(boolean waitStatus) {
 		waiting = waitStatus;

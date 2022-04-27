@@ -1,10 +1,16 @@
 package graphics;
 
+import java.beans.PropertyChangeEvent;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import util.annotations.PropertyNames;
 import util.annotations.StructurePattern;
 import util.annotations.StructurePatternNames;
+
+@PropertyNames({ "ImageFileName", "X", "Y", "PropertyChangeListeners", "ZIndex", "Color", "Filled", "Stroke", "Width",
+		"Height" })
 
 @StructurePattern(StructurePatternNames.IMAGE_PATTERN)
 
@@ -27,7 +33,9 @@ public class Spaghetti extends Table implements SpaghettiInterface {
 
 	@Override
 	public void setImageFileName(String newVal) {
+		String oldVal = getImageFileName();
 		imageName = newVal;
+		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "ImageFileName", oldVal, newVal));
 
 	}
 

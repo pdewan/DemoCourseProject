@@ -1,5 +1,8 @@
 package graphics;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Stroke;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
@@ -15,6 +18,8 @@ public class RotatingLine extends Locatable implements RotatingLineInterface {
 	double radius, angle;
 	RotatingLineInterface newLine;
 	boolean used;
+	Stroke strokie = new BasicStroke(1F);
+	Color theColor = new Color(000000);
 
 	final static int INIT_X = 100;
 	final static int INIT_Y = 100;
@@ -25,6 +30,7 @@ public class RotatingLine extends Locatable implements RotatingLineInterface {
 	public RotatingLine(int initX, int initY, double initRadius, double initAngle) {
 		super(initX, initY);
 		radius = initRadius;
+		angle = initAngle;
 		used = false;
 
 	}
@@ -41,7 +47,16 @@ public class RotatingLine extends Locatable implements RotatingLineInterface {
 
 	@Override
 	public void setX(int newX) {
+		int oldX = getX();
 		x = newX;
+		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "X", oldX, newX));
+	}
+
+	@Override
+	public void setY(int newY) {
+		int oldY = getY();
+		y = newY;
+		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Y", oldY, newY));
 	}
 
 	@Override
@@ -60,10 +75,6 @@ public class RotatingLine extends Locatable implements RotatingLineInterface {
 		return (int) (getRadius() * Math.sin(getAngle()));
 	}
 
-	@Override
-	public void setY(int newY) {
-		y = newY;
-	}
 
 	@Override
 	public double getRadius() {
@@ -90,8 +101,6 @@ public class RotatingLine extends Locatable implements RotatingLineInterface {
 		double oldWidth = getWidth();
 		double oldAngle = getAngle();
 		angle = newAngle;
-		// propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Angle",
-		// oldAngle, newAngle));
 		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Height", oldHeight, getHeight()));
 		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Width", oldWidth, getWidth()));
 	}
@@ -109,6 +118,31 @@ public class RotatingLine extends Locatable implements RotatingLineInterface {
 			used = true;
 		}
 	}
+
+	@Override
+	public Stroke getStroke() {
+		return strokie;
+	}
+
+	@Override
+	public Color getColor() {
+		return theColor;
+	}
+
+	@Override
+	public void setColor(int color) {
+		Color oldColor = getColor();
+		theColor = new Color(color);
+		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Color", oldColor, getColor()));
+	}
+
+	@Override
+	public void setStroke(float stroke) {
+		Stroke oldStroke = getStroke();
+		strokie = new BasicStroke(stroke);
+		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Stroke", oldStroke, getStroke()));
+	}
+
 
 	@Override
 	public void rotate(int units) {

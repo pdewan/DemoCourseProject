@@ -8,8 +8,6 @@ public interface PhilosopherAvatarInterface extends PropertyListenerRegisterer {
 
 	public PhilosopherHeadInterface getHead();
 
-	public AngleInterface getArms();
-
 	public RotatingLineInterface getBody();
 
 	public boolean getWaiting();
@@ -29,5 +27,19 @@ public interface PhilosopherAvatarInterface extends PropertyListenerRegisterer {
 	public void addPropertyChangeListener(RotatingLineInterface rotatingLine, PropertyChangeListener propertySupport);
 
 	public void addPropertyChangeListener(AngleInterface angle, PropertyChangeListener propertySupport);
+
+	public void say(String speak);
+
+	public RotatingLineInterface getVisionLine1();
+
+	public RotatingLineInterface getVisionLine2();
+
+	// ElbowInterface getRightElbow();
+
+	// ElbowInterface getLeftElbow();
+
+	AngleInterface getArms();
+
+	StringShapeInterface getStringShape();
 
 }

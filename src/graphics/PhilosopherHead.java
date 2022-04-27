@@ -12,8 +12,8 @@ import util.annotations.PropertyNames;
 import util.annotations.StructurePattern;
 import util.annotations.StructurePatternNames;
 
-@PropertyNames({ "X", "Y", "Width", "Height", "ImageFileName", "PropertyChangeListeners" })
-@EditablePropertyNames({ "X", "Y", "Width", "Height", "ImageFileName" })
+@PropertyNames({ "X", "Y", "Width", "Height", "ImageFileName", "PropertyChangeListeners", "ZIndex" })
+@EditablePropertyNames({ "X", "Y", "Width", "Height", "ImageFileName", "ZIndex" })
 
 @StructurePattern(StructurePatternNames.IMAGE_PATTERN)
 

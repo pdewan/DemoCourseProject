@@ -1,5 +1,7 @@
 package graphics;
 
+import java.awt.Color;
+import java.awt.Stroke;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
@@ -32,5 +34,13 @@ public interface RotatingLineInterface extends PropertyListenerRegisterer {
 	public void addPropertyChangeListener(PropertyChangeListener newListen);
 
 	List<PropertyChangeListener> getPropertyChangeListeners();
+
+	void setStroke(float stroke);
+
+	Stroke getStroke();
+
+	public void setColor(int color);
+
+	Color getColor();
 
 }

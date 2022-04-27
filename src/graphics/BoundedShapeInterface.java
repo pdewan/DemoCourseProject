@@ -7,8 +7,8 @@ import java.util.List;
 import util.annotations.EditablePropertyNames;
 import util.annotations.PropertyNames;
 
-@PropertyNames({ "Width", "Height", "PropertyChangeListeners" })
-@EditablePropertyNames({ "Width", "Height" })
+@PropertyNames({ "Width", "Height", "ZIndex", "PropertyChangeListeners" })
+@EditablePropertyNames({ "Width", "Height", "ZIndex" })
 
 public interface BoundedShapeInterface extends PropertyChangeListener {
 
@@ -23,5 +23,9 @@ public interface BoundedShapeInterface extends PropertyChangeListener {
 	public void addPropertyChangeListener(PropertyChangeListener newListen);
 
 	public List<PropertyChangeListener> getPropertyChangeListeners();
+
+	int getZIndex();
+
+	void setZIndex(int newValue);
 
 }

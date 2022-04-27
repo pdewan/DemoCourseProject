@@ -4,11 +4,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
-import util.annotations.EditablePropertyNames;
-import util.annotations.PropertyNames;
-
-@PropertyNames({ "X", "Y", "PropertyChangeListeners" })
-@EditablePropertyNames({ "X", "Y" })
+// @PropertyNames({ "X", "Y", "PropertyChangeListeners" })
+// @EditablePropertyNames({ "X", "Y" })
 
 public class Locatable implements LocatableInterface {
 
@@ -34,14 +31,16 @@ public class Locatable implements LocatableInterface {
 
 	@Override
 	public void setX(int newX) {
-		// int oldX = getX();
+		int oldX = getX();
 		x = newX;
+		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "X", oldX, newX));
 	}
 
 	@Override
 	public void setY(int newY) {
-		// int oldY = getY();
+		int oldY = getY();
 		y = newY;
+		propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Y", oldY, newY));
 	}
 
 	@Override

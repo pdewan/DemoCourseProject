@@ -6,6 +6,10 @@ public interface AngleInterface {
 
 	public RotatingLineInterface getRightLine();
 
+	// public void setAngleLeft(double newAngle);
+
+	// public void setAngleRight(double newAngle);
+
 	public void move(int moveX, int moveY);
 
 	public void moveTo(int moveX, int moveY);

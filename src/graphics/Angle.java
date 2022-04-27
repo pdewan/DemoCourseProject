@@ -10,12 +10,14 @@ import util.annotations.StructurePatternNames;
 
 public class Angle implements AngleInterface {
 
-	final static int INITIAL_RADIUS = 40;
+	final static int INITIAL_RADIUS = 30;
 	final static int INITIAL_ANGLE1 = 0;
 	final static int INITIAL_ANGLE2 = 0;
 	final static int START_X = 100;
 	final static int START_Y = 100;
 	final static int TIME = 300;
+	final static int ANGLE_MOVE_RAISE = 50;
+	final static int ANGLE_MOVE_LOWER = 70;
 
 	RotatingLineInterface leftLine;
 	RotatingLineInterface rightLine;
@@ -42,13 +44,21 @@ public class Angle implements AngleInterface {
 
 	@Override
 	public void raiseArm() {
-		rightLine.setAngle(50);
+		rightLine.setAngle(ANGLE_MOVE_RAISE);
 	}
 
 	@Override
 	public void lowerArm() {
-		rightLine.setAngle(70);
+		rightLine.setAngle(ANGLE_MOVE_LOWER);
 	}
+
+	/*
+	 * @Override public void setAngleLeft(double newAngle) { double oldVal =
+	 * getLeftLine().getAngle(); leftLine.setAngle(newAngle); }
+	 * 
+	 * @Override public void setAngleRight(double newAngle) { double oldVal =
+	 * getRightLine().getAngle(); rightLine.setAngle(newAngle); }
+	 */
 
 	@Override
 	public void move(int moveX, int moveY) {

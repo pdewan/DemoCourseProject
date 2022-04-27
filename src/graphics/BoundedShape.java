@@ -3,16 +3,14 @@ package graphics;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
-import util.annotations.EditablePropertyNames;
-import util.annotations.PropertyNames;
-
-@PropertyNames({ "Width", "Height", "PropertyChangeListeners", "X", "Y" })
-@EditablePropertyNames({ "Width", "Height", "X", "Y" })
+// @PropertyNames({ "Width", "Height", "PropertyChangeListeners", "X", "Y" })
+// @EditablePropertyNames({ "Width", "Height", "ZIndex", "X", "Y" })
 
 public class BoundedShape extends Locatable implements BoundedShapeInterface {
 
 	int width;
 	int height;
+	int zIndex;
 
 	public BoundedShape(int initX, int initY, int initWidth, int initHeight) {
 		super(initX, initY);
@@ -44,6 +42,19 @@ public class BoundedShape extends Locatable implements BoundedShapeInterface {
 		height = newHeight;
 		// propertySupport.notifyAllListeners(new PropertyChangeEvent(this, "Height",
 		// oldHeight, newHeight));
+	}
+
+	@Override
+	public int getZIndex() {
+		System.out.println("returning z index");
+		return zIndex;
+	}
+
+	@Override
+	public void setZIndex(int newValue) {
+		System.out.println("setting z index");
+
+		zIndex = newValue;
 	}
 
 	@Override

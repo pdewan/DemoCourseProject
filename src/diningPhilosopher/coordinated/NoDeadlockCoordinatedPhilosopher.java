@@ -1,6 +1,5 @@
 package diningPhilosopher.coordinated;
 
-import coordination.joiner.JoinerFactory;
 import diningPhilosopher.chopstick.Chopstick;
 import diningPhilosopher.philosopher.BasicPhilosopher;
 
